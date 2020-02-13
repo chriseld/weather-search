@@ -10,6 +10,8 @@ $("#find-city").on("click", function(event) {
         url: queryURL,
         method: "GET"
     }).then(function(response) {
+
+        // Create variables
         
         var card = $("<div class='card'>");
         var firstLine = "<p style='font-weight: bold; display: inline;'>" + JSON.parse(JSON.stringify(response.name)) + " (" + moment().format('YYYY/MM/DD') + ")";
@@ -18,6 +20,8 @@ $("#find-city").on("click", function(event) {
         var humidity = "Humidity: " + JSON.parse(JSON.stringify(response.main.humidity)) + "%<br>";
         var windspeed = "Windspeed: " + JSON.parse(JSON.stringify(response.wind.speed)) + " MPH<br>";
 
+        // Append variables
+        
         card.append(firstLine);
         card.append(wicon);
         card.append(temperature);
@@ -25,6 +29,8 @@ $("#find-city").on("click", function(event) {
         card.append(windspeed);
 
 
+        // Add new cards above the previous
+        
         $("#cards").prepend(card);
     });
 
